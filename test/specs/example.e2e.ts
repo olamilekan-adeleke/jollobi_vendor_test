@@ -1,14 +1,9 @@
-describe('My Login application', () => {
-    it('should login with valid credentials', async () => {
-        await browser.url(`https://the-internet.herokuapp.com/login`)
+const find = require('appium-fluent-finder');
+const assert = require('assert');
 
-        await $('#username').setValue('tomsmith')
-        await $('#password').setValue('SuperSecretPassword!')
-        await $('button[type="submit"]').click()
+describe('Launch And Click Login Button', () => {
+    it('should launch and navigate to login screen', async () => {
 
-        await expect($('#flash')).toBeExisting()
-        await expect($('#flash')).toHaveTextContaining(
-            'You logged into a secure area!')
     })
 })
 

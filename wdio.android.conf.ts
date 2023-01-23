@@ -7,6 +7,7 @@ export const config: Options.Testrunner = {
     // ====================
     // WebdriverIO supports running e2e tests as well as unit and component tests.
     runner: 'local',
+    path: '/wd/hub',
     autoCompileOpts: {
         tsNodeOpts: {
             project: './tsconfig.json'
@@ -61,13 +62,16 @@ export const config: Options.Testrunner = {
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
+        platformName: 'Android',
+        'appium:deviceName': 'emulator-5554',
+        'appium:automationName': 'Flutter',
+        'appium:app': '/Users/kod-x/project/jolobbi_vendor_new/build/app/outputs/flutter-apk/app-debug.apk',
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
         maxInstances: 5,
         //
-        browserName: 'chrome',
         acceptInsecureCerts: true
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
