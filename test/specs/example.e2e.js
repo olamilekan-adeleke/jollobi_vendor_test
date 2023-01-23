@@ -8,5 +8,24 @@ describe("My Login application", () => {
     assert.strictEqual(findButtonText, "Login");
 
     await driver.elementClick(button);
+
+    await driver.execute("flutter:waitFor", find.byType("TextFormField"));
+    await driver.elementSendKeys(
+      find.byValueKey("login_email"),
+      "olashop@gmail.com"
+    );
+
+    await driver.elementSendKeys(
+      find.byValueKey("login_password"),
+      "Tested2021"
+    );
+
+    const loginButton = await find.byText("Log In");
+    const findLoginButtonText = await driver.getElementText(loginButton);
+    assert.strictEqual(findLoginButtonText, "Log In");
+
+    await driver.elementClick(loginButton);
+
+    await driver.execute("flutter:waitFor", find.byText("Welcome Back"));
   });
 });
