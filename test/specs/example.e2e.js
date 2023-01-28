@@ -10,15 +10,16 @@ describe("My Login application", () => {
     await driver.elementClick(button);
 
     await driver.execute("flutter:waitFor", find.byType("TextFormField"));
-    await driver.elementSendKeys(
-      find.byValueKey("login_email"),
-      "olashop@gmail.com"
-    );
 
-    await driver.elementSendKeys(
-      find.byValueKey("login_password"),
-      "Tested2021"
-    );
+    await driver.elementClick(find.byValueKey("login_email"));
+    await driver.execute("flutter:enterText", "olashop@gmail.com");
+
+    await driver.elementClick(find.byValueKey("login_password"));
+    await driver.execute("flutter:enterText", "Tested2021");
+
+    console.log("I am here" + Date());
+    await driver.setImplicitTimeout(5000);
+    console.log("I am here 2 " + Date());
 
     const loginButton = await find.byText("Log In");
     const findLoginButtonText = await driver.getElementText(loginButton);
